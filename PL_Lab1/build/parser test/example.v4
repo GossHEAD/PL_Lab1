@@ -1,0 +1,125 @@
+// Test file for Variant 4 language
+// Covers: functions, types, if/else, while/until, repeat, break,
+//         blocks, expressions, calls, slices, literals
+
+// Simple function without body (declaration)
+def noop()
+end
+
+// Function with return type and typed arguments
+def add(a of int, b of int) of int
+    a + b;
+end
+
+// Function demonstrating all statement kinds
+def main()
+    // Variable assignment
+    x = 42;
+    y = 0xFF;
+    z = 0b10110;
+    name = "hello world";
+    ch = 'A';
+    flag = true;
+
+    // If-then
+    if x > 0 then
+        y = x + 1;
+
+    // If-then-else
+    if flag then
+        x = 1;
+    else
+        x = 0;
+
+    // While loop
+    while x > 0
+        x = x - 1;
+    end
+
+    // Until loop
+    until x == 10
+        x = x + 1;
+    end
+
+    // Break inside loop
+    while true
+        if x == 5 then break;
+        x = x + 1;
+    end
+
+    // Repeat-while (do-while equivalent)
+    x = 0;
+    x = x + 1 while x < 10;
+
+    // Repeat-until
+    x = x - 1 until x == 0;
+
+    // Block with begin-end
+    begin
+        x = 1;
+        y = 2;
+    end
+
+    // Block with braces
+    {
+        x = 3;
+        y = 4;
+    }
+
+    // Expression with all binary operators
+    result = (a + b) * c - d / e % f;
+    bits_result = (a & b) | (c ^ d);
+    shifted = a << 2;
+    logic = (a > 0) && (b < 10) || !flag;
+
+    // Unary operators
+    neg = -x;
+    inv = ~x;
+    not_flag = !flag;
+    x++;
+    y--;
+
+    // Function call
+    r = add(x, y);
+    print("result: ", r);
+
+    // Nested calls
+    z = foo(bar(1, 2), baz(3));
+
+    // Array indexing
+    arr[0] = 10;
+    val = arr[i];
+
+    // Array slicing
+    sub = arr[1..5];
+
+    // Multi-dimensional / multi-range
+    mat[i, j] = 0;
+end
+
+// Function with array type argument
+def processArray(data of int array[1]) of int
+    sum = 0;
+    i = 0;
+    while i < 10
+        sum = sum + data[i];
+        i = i + 1;
+    end
+    sum;
+end
+
+// Nested function definition in block
+def outer()
+    x = 1;
+    {
+        def inner()
+            y = 2;
+        end
+        z = 3;
+    }
+end
+
+// Custom type usage
+def useCustomType(p of MyStruct) of MyStruct
+    p;
+end
